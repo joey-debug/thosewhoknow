@@ -68,6 +68,7 @@
             .no-button{
                  position: static;
             }
+            
             .button-container {
                 flex-direction: column; /* Stack buttons vertically on small screens */
             }
@@ -134,7 +135,7 @@
                     gifContainer.appendChild(gif2)
                     newText.textContent = "YAY !!😍😍😍🥰🥰🥰🥹🥹🥹 "
                     noButton.remove()
-                    yesButton.remove
+                    yesButton.remove()
                 }
                  
             });
@@ -150,10 +151,18 @@
                 // Teleport the button to a random position
                 const randomX = Math.floor(Math.random() * (window.innerWidth - noButton.offsetWidth));
                 const randomY = Math.floor(Math.random() * (window.innerHeight - noButton.offsetHeight));
-
+                
                 noButton.style.left = randomX + 'px'; // Set random left position
                 noButton.style.top = randomY + 'px'; // Set random top position
             });
+
+            noButton.addEventListener('click', () => {
+               
+            let currentScale = parseFloat(yesButton.style.transform.replace('scale(', '').replace(')', '')) || 1; 
+                currentScale += 0.1; // Increment by 0.1 for each click (i.e., 10% larger)
+                yesButton.style.transform = `scale(${currentScale})`; // Apply the new scale
+                yesButton.style.transition = "transform 0.3s ease"; // Smooth transition for the scaling
+           });
 
         });
     </script>
