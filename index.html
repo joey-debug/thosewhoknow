@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Question</title>
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the container that holds the text and button */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        button {
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            padding: 10px 50px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px; /* Space between text and button */
+        }
+
+        /* No button specific hover effect */
+        .no-button {
+            position: absolute; /* Allow the button to teleport */
+        }
+
+        .no-button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="content-container">
+        <h1>Hello dulce.</h1>
+        <h1>Congratulations on beating the obby.</h1>
+        <h1>I have a question though....</h1>
+        <button type="button" id="clearButton">next</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let currentImage = null;
+        const button = document.getElementById('clearButton');
+
+        button.addEventListener('click', () => {
+            // Clear the existing content
+            document.body.innerHTML = '';
+
+            // Add the Tenor GIF above the text
+            const gifContainer = document.createElement('div');
+            
+            document.body.appendChild(gifContainer);
+            // ADD THE GIF TO CONTAINER
+            const gif = document.createElement('img');
+            gif.src = 'my-giff.gif';
+            gifContainer.appendChild(gif);
+            const gif2 = document.createElement('img');
+            gif2.src = 'images.png'
+            currentImage = gif;
+            
+
+            // Add new text
+            const newText = document.createElement('h1');
+            newText.textContent = 'Will you be my valentine😍😍😍🥰🥰🥰?';
+            document.body.appendChild(newText);
+
+            let currentText = null;
+            currentText = newText;
+
+            // Create a container for the buttons
+            const buttonContainer = document.createElement('div');
+            buttonContainer.style.display = 'flex'; // Make the buttons side by side
+            buttonContainer.style.justifyContent = 'center'; // Center the buttons horizontally
+            buttonContainer.style.marginTop = '20px'; // Add space between text and buttons
+            document.body.appendChild(buttonContainer);
+
+            // Add "Yes" button
+            const yesButton = document.createElement('button');
+            yesButton.textContent = 'Yes';
+            yesButton.style.marginRight = '10px'; // Add spacing between buttons
+            buttonContainer.appendChild(yesButton);
+
+            // Add event listener to "Yes" button
+            yesButton.addEventListener('click', () => {
+                alert('yay! 😍😍🥰🥰🥰');
+                if(currentImage) {
+                    currentImage.remove()
+                    gifContainer.appendChild(gif2)
+                    newText.textContent = "YAY !!😍😍😍🥰🥰🥰🥹🥹🥹 "
+                    noButton.remove()
+                    yesButton.remove()
+                }
+                 
+            });
+
+            // Add "No" button
+            const noButton = document.createElement('button');
+            noButton.textContent = 'No';
+            noButton.classList.add('no-button');  // Add class to target with CSS
+            buttonContainer.appendChild(noButton);
+
+            // Add event listener to "No" button
+            noButton.addEventListener('mouseover', () => {
+                // Teleport the button to a random position
+                const randomX = Math.floor(Math.random() * (window.innerWidth - noButton.offsetWidth));
+                const randomY = Math.floor(Math.random() * (window.innerHeight - noButton.offsetHeight));
+
+                noButton.style.left = randomX + 'px'; // Set random left position
+                noButton.style.top = randomY + 'px'; // Set random top position
+            });
+
+        });
+    </script>
+</body>
+</html>
