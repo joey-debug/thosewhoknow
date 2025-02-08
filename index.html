@@ -159,9 +159,9 @@
             noButton.addEventListener('click', () => {
                
             let currentScale = parseFloat(yesButton.style.transform.replace('scale(', '').replace(')', '')) || 1; 
-                currentScale += 0.1; // Increment by 0.1 for each click (i.e., 10% larger)
+                currentScale += 0.9; // Increment by 0.1 for each click (i.e., 10% larger)
                 yesButton.style.transform = `scale(${currentScale})`; // Apply the new scale
-                yesButton.style.transition = "transform 0.3s ease"; // Smooth transition for the scaling
+                yesButton.style.transition = "transform 0.1s ease"; // Smooth transition for the scaling
            });
 
         });
