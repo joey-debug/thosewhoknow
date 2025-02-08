@@ -60,7 +60,16 @@
         .no-button:hover {
             background-color: #45a049;
         }
+        @media (max-width: 600px) {
+            button {
+                font-size: 14px;
+                padding: 8px 30px;
+            }
 
+            .button-container {
+                flex-direction: column; /* Stack buttons vertically on small screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -123,7 +132,7 @@
                     gifContainer.appendChild(gif2)
                     newText.textContent = "YAY !!😍😍😍🥰🥰🥰🥹🥹🥹 "
                     noButton.remove()
-                    yesButton.remove()
+                    yesButton.remove
                 }
                  
             });
